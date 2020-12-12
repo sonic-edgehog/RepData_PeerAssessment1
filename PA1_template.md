@@ -138,7 +138,7 @@ ggplot(total_steps_raw, aes(x = steps)) +
 ## Warning: Removed 8 rows containing non-finite values (stat_bin).
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![original histogram daily steps](figure_1.png) 
 
 From the histogram, the distribution is similar to a bell curve, with more frequent points at the 10000 range.
 
@@ -165,7 +165,7 @@ interval_data_raw = activity_data[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols 
 ggplot(interval_data_raw, aes(x = interval , y = steps)) + geom_line(color="steelblue", size=1) + labs(title = "Average Daily Steps", x = "Time Intervals", y = "Average Steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![original five-minute interval steps](figure_2.png)
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -239,7 +239,7 @@ total_steps_imp[, .(mean_steps_imp = mean(steps), median_steps_imp = median(step
 ggplot(total_steps_imp, aes(x = steps)) + geom_histogram(fill = "darkgreen", bins=20) + labs(title = "Daily Steps", x = "Steps", y = "Frequency")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![imputed histogram daily steps](figure_3.png)
 
 Type of Estimate | Mean_Steps | Median_Steps
 --- | --- | ---
@@ -284,6 +284,6 @@ interval_data_imp = activity_data_imp[, c(lapply(.SD, mean, na.rm = TRUE)), .SDc
 ggplot(interval_data_imp , aes(x = interval , y = steps, color=`weekday or weekend`)) + geom_line() + labs(title = "Average Daily Steps by Weektype", x = "Interval", y = "Number of Steps") + facet_wrap(~`weekday or weekend` , ncol = 1, nrow=2)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![imputed five-minute interval steps](figure_4.png)
 
 Finally, we observe that there is a difference between the activity hours during weekdays and weekends. Significantly, the most active interval has observed such difference.
